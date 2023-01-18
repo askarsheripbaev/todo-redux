@@ -1,10 +1,7 @@
 import React from 'react';
 import style from './style.module.css'
 import {Button} from "@mui/material";
-
-function DeleteIcon() {
-   return null;
-}
+import DeleteIcon from '@mui/icons-material/Delete'
 
 const TodoItem = (props) => {
    const {
@@ -21,9 +18,9 @@ const TodoItem = (props) => {
        }}
        >
           {text}
-          <Button onClick={onDelete} variant="outlined" startIcon={<DeleteIcon />}>
-             Delete
-          </Button>
+          <DeleteIcon onClick={onDelete}
+          size='medium'
+          />
        </li>
    );
 };
