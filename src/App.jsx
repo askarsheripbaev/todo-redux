@@ -12,22 +12,25 @@ function App() {
    const posts = useSelector(state => state.posts.list)
    const post = useSelector(state => state.posts.data)
    const update = useSelector(state => state.posts)
-   const create = useSelector(state => state.posts)
+   const create = useSelector(state => state.posts.data)
+   const deleteStatus = useSelector(state => state.posts)
 
    const dispatch = useDispatch()
-   const {fetchPosts, fetchPostById, updatePost, createPost} =  postOperation
+   const {fetchPosts, fetchPostById, updatePost, createPost, deletePost} =  postOperation
 
    useEffect(() => {
       // dispatch(postOperation.fetchPosts())
-      // dispatch(postOperation.fetchPostById(8))
-      // dispatch(postOperation.updatePost(5))
-      dispatch(postOperation.createPost(10))
+      dispatch(postOperation.fetchPostById(8))
+      dispatch(postOperation.updatePost(5))
+      dispatch(postOperation.createPost())
+      dispatch(postOperation.deletePost(8))
 
    }, [])
    // console.log(posts)
-   // console.log(post)
-   // console.log(update, 'UPDATE')
+   console.log(post, 'ID')
+   console.log(update, 'UPDATE')
    console.log(create, 'CREATE')
+   console.log(deleteStatus, 'Delete')
 
   return (
     <div>

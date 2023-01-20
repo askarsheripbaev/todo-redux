@@ -51,6 +51,7 @@ const postReducer = (state = initialState, action) => {
       case CREATE_POST.RECEIVE:
          return {
             ...state,
+            data: action.payload,
             loading: false
          }
       case CREATE_POST.FAILURE:
@@ -67,6 +68,7 @@ const postReducer = (state = initialState, action) => {
       case UPDATE_POST.RECEIVE:
          return {
             ...state,
+            data: action.payload,
             loading: false
          }
       case UPDATE_POST.FAILURE:

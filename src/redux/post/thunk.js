@@ -41,11 +41,21 @@ const fetchPostById = (id) => async (dispatch) => {
       dispatch(getPostFailureActionCreator(e))
    }
 }
+const updatePostMethod = {
+   method: 'PUT',
+   body: JSON.stringify({
+      title: 'foo222',
+      body: 'bar222',
+   }),
+   headers: {
+      'Content-type': 'application/json; charset=UTF-8',
+   }
 
+}
 const updatePost = (id) => async (dispatch) => {
    dispatch(updatePostRequestActionCreator())
    try {
-      const req = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {method: 'PUT'})
+      const req = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, updatePostMethod)
       const parseData = await req.json()
       setTimeout(() => {
          dispatch(updatePostReceiveActionCreator(parseData))
@@ -59,6 +69,7 @@ const createPostMethod = {
    body: JSON.stringify({
       title: 'foo',
       body: 'bar',
+      userId: 1
    }),
    headers: {
       'Content-type': 'application/json; charset=UTF-8',
