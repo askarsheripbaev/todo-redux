@@ -15,14 +15,15 @@ import {
    deletePostReceiveActionCreator,
    deletePostFailureActionCreator
 } from "./actions";
+import fetchApi from './../../API/http.js'
 
 const fetchPosts = () => async (dispatch) => {
    dispatch(getPostsRequestActionCreator())
    try {
-      const req = await fetch('https://jsonplaceholder.typicode.com/posts')
-      const parseData = await req.json()
+      const req = await fetchApi.post('/api/pets')
+      // const parseData = await req.json()
       setTimeout(() => {
-         dispatch(getPostsReceiveActionCreator(parseData))
+         dispatch(getPostsReceiveActionCreator(req.data))
       }, 2000)
    }catch (e){
       dispatch(getPostsFailureActionCreator(e))
